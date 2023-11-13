@@ -4,13 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MS PHONE SHOPE</title>
+    <!-- daisy UI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.0.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body>
      <header>
-
+    <h1>MS PHONES</h1>
      </header>
-     <main>
+     <main class="container mx-auto mt-7">
 
+            <section>
+                 <div class="bg-blue-400 p-5 m-5 rounded-lg">
+                    <input id="inputField" type="text" placeholder="Search here" class="input  w-full max-w-xs border-none fo" />
+                    <button class="btn btn-active" onclick="handelSearch()">Search..</button>
+                 </div>
+            </section>
+            <section>
+                  <div id="card-container" class="  grid grid-cols md:grid-cols-2 lg:grid-cols-3 gap-4">
+                   
+                     
+                  </div>
+            </section>
      </main>
      <footer>
 
