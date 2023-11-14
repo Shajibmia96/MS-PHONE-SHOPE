@@ -18,13 +18,22 @@
             <section>
                  <div class="bg-blue-400 p-5 m-5 rounded-lg">
                     <input id="inputField" type="text" placeholder="Search here" class="input  w-full max-w-xs border-none fo" />
-                    <button class="btn btn-active" onclick="handelSearch()">Search..</button>
+                    <button class="btn btn-active" onclick=" searchButton()">Search..</button>
                  </div>
+            </section>
+            <section>
+               <div id="loadingSpinner" class=" text-center my-20 hidden"><span class="loading loading-spinner loading-lg"></span></div>
             </section>
             <section>
                   <div id="card-container" class="  grid grid-cols md:grid-cols-2 lg:grid-cols-3 gap-4">
                    
+                    
+                    
                      
+                  </div>
+
+                  <div id="showAll" class=" text-center my-10 hidden">
+                    <button onclick="seeAllELement()" class="btn btn-active bg-blue-600">SEE MORE</button>
                   </div>
             </section>
      </main>
@@ -33,5 +42,6 @@
      </footer>
 
      <script src="js/phone.js"></script>
+     <script src="js/recap.js"></script>
 </body>
 </html>
