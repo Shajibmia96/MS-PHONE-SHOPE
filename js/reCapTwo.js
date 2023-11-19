@@ -1,16 +1,30 @@
-const dataLoadAPI = async(brandName="13" ) =>{
+const dataLoadAPI = async(brandName="13" ,isShowAll ) =>{
    const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${brandName}`);
    const data = await res.json()
    const phone = data.data
-   displayLoadData(phone)
+   displayLoadData(phone ,isShowAll)
 }
 
- const displayLoadData=(phonesData) =>{
+ const displayLoadData=(phonesData ,isShowAll) =>{
        const cardContainer = document.getElementById("card-container")
     //    for new element add
       cardContainer.textContent = '';
+      const showAllContainer = document.getElementById("showAll");
+      // show button mudify;
+      console.log("All Show button was clicked" , isShowAll)
+
+      if(phonesData.length >12 && !isShowAll){
+        showAllContainer.classList.remove("hidden")
+      }else{
+        showAllContainer.classList.add("hidden")
+      }
+      if(!isShowAll){
+        phonesData = phonesData.slice(0,12);
+      }
+    
+          //data adding in container
       phonesData.forEach(phone =>{
-        console.log(phone)
+        // console.log(phone)
           const newDiv = document.createElement("div")
           newDiv.classList = "card p-4 bg-gray-300 shadow-xl"
            newDiv.innerHTML =`
@@ -23,9 +37,7 @@ const dataLoadAPI = async(brandName="13" ) =>{
              </div>
            </div>
            `;
-           if(phone >12){
-            phone.slice(0 ,12)
-           }
+           
            cardContainer.appendChild(newDiv)
       });
       toggleLoadingSpinner(false)
@@ -33,11 +45,11 @@ const dataLoadAPI = async(brandName="13" ) =>{
 dataLoadAPI()
 
 // search  bar 
-const searchButton =() =>{
+const searchButton =(isShowAll) =>{
     const inputField = document.getElementById("inputField")
     const inputValue = inputField.value;
     // console.log(inputValue)
-    dataLoadAPI(inputValue );
+    dataLoadAPI(inputValue , isShowAll);
     toggleLoadingSpinner(true)
 }
 
@@ -49,4 +61,11 @@ const searchButton =() =>{
     }else[
       loadSpinner.classList.add("hidden")
     ]
+ };
+//  handle seeAllELement
+
+ const seeAllELement =()=>{
+    const showAllbtn = document.getElementById("showAll");
+    //  showAllbtn.classList.remove("hidden")
+    searchButton(true)
  }
